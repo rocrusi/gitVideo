@@ -1,1 +1,57 @@
 
+public class Conta {
+    
+    private String titular;
+    private double saldo;
+
+   
+    public Conta(String titular, double saldoInicial) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+            System.out.println("Depósito de R$ " + valor + " realizado com sucesso.");
+        }
+    }
+
+ 
+    public void sacar(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            System.out.println("Saque de R$ " + valor + " realizado com sucesso.");
+        } else {
+            System.out.println("Saldo insuficiente ou valor inválido para saque!");
+        }
+    }
+
+    
+    public double getSaldo() {
+        return saldo;
+    }
+
+   
+    public String getTitular() {
+        return titular;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Criando (instanciando) um objeto do tipo Conta
+        Conta minhaConta = new Conta("Maria Silva", 500.00);
+
+        // Interagindo com os métodos do objeto
+        System.out.println("Titular: " + minhaConta.getTitular());
+        System.out.println("Saldo inicial: R$ " + minhaConta.getSaldo());
+
+        minhaConta.depositar(200.00);
+        minhaConta.sacar(150.00);
+
+        System.out.println("Saldo final: R$ " + minhaConta.getSaldo());
+    }
+}
